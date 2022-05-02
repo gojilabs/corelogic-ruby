@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'logger'
 require 'corelogic/response_parser'
 require 'corelogic/building'
 require 'corelogic/collection'
@@ -62,9 +63,10 @@ module Corelogic
           try += 1
           response_parser.perform(perform_get(path, options))
         rescue Corelogic::Error::Unauthorized => e
-          puts e.message
+          logger = Logger.new($stdout)
+          logger.debug e.message
           if try < 2
-            puts "Retry: #{try}" if ENV['RAILS_ENV'] && ENV['RAILS_ENV'] == 'development'
+            logger.debug { "Retry: #{try}" } if ENV.fetch('RAILS_ENV', nil) && ENV.fetch('RAILS_ENV', nil) == 'development'
             perform_connection(force: true)
             retry
           end

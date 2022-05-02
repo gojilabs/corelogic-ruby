@@ -6,6 +6,7 @@ RSpec.describe Corelogic::Connection do
   subject(:connection) do
     Corelogic.container['connection']
   end
+
   let(:properties_response) { json(:properties_response, fixture: './spec/fixture/properties_response.json') }
   let(:token) { SecureRandom.hex }
 
@@ -28,6 +29,7 @@ RSpec.describe Corelogic::Connection do
       connection.bearer_token = token
       expect(connection.authenticated?).to be true
     end
+
     it 'returns false if the `bearer_token` is not present' do
       connection.bearer_token = ''
       expect(connection.authenticated?).to be false

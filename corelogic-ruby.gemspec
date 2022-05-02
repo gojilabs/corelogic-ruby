@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.bindir        = 'bin'
 
   spec.require_paths = ['lib']
-  spec.required_ruby_version = '> 2.7'
+  spec.required_ruby_version = '> 3.1'
 
   # a b c d e f g h i j k l m n o p q r s t u v w x y z
   spec.add_dependency 'dry-auto_inject'
@@ -34,6 +34,11 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'faker', '~> 2.20'
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
+  spec.add_development_dependency 'rubocop-performance'
+  spec.add_development_dependency 'rubocop-rails'
+  spec.add_development_dependency 'rubocop-rspec'
   spec.add_development_dependency 'simplecov', '~> 0.21'
   spec.add_development_dependency 'webmock', '~>3.14'
+
+  spec.metadata['rubygems_mfa_required'] = 'true'
 end

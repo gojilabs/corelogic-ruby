@@ -12,7 +12,7 @@ FactoryBot.define do
     end
 
     after(:build) do |response, context|
-      response.items = context.count.times.map { response.items.first }
+      response.items = Array.new(context.count).map { response.items.first }
     end
   end
 

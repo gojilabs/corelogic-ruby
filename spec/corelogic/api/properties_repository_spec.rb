@@ -22,10 +22,11 @@ describe Corelogic::API::PropertiesRepository do
       before do
         stub_request(:get, "#{Corelogic::Connection::BASE_PATH}search")
           .to_return(
-            body: response,
+            body:    response,
             headers: { content_type: 'application/vnd.corelogic.v1+json;charset=UTF-8' }
           )
       end
+
       it 'requests the correct resource on GET' do
         properties.search
         expect(a_get('search')).to have_been_made
@@ -43,7 +44,7 @@ describe Corelogic::API::PropertiesRepository do
 
       before do
         stub_request(:get, /ownership/)
-          .to_return(body: response,
+          .to_return(body:    response,
                      headers: { content_type: 'application/vnd.corelogic.v1+json;charset=UTF-8' })
       end
 
@@ -64,7 +65,7 @@ describe Corelogic::API::PropertiesRepository do
 
       before do
         stub_request(:get, /buildings/)
-          .to_return(body: response,
+          .to_return(body:    response,
                      headers: { content_type: 'application/vnd.corelogic.v1+json;charset=UTF-8' })
       end
 
@@ -85,7 +86,7 @@ describe Corelogic::API::PropertiesRepository do
 
       before do
         stub_request(:get, /tax-assessments/)
-          .to_return(body: response,
+          .to_return(body:    response,
                      headers: { content_type: 'application/vnd.corelogic.v1+json;charset=UTF-8' })
       end
 
@@ -106,7 +107,7 @@ describe Corelogic::API::PropertiesRepository do
 
       before do
         stub_request(:get, /site-location/)
-          .to_return(body: response,
+          .to_return(body:    response,
                      headers: { content_type: 'application/vnd.corelogic.v1+json;charset=UTF-8' })
       end
 
@@ -127,16 +128,16 @@ describe Corelogic::API::PropertiesRepository do
 
       before do
         stub_request(:get, /ownership-transfers/)
-          .to_return(body: response,
+          .to_return(body:    response,
                      headers: { content_type: 'application/vnd.corelogic.v1+json;charset=UTF-8' })
       end
 
-      it 'requests the correct resource on GET' do
+      it 'requests market latest resource on GET' do
         properties.ownership_transfers(clip)
         expect(a_get("#{clip}/ownership-transfers/market/latest")).to have_been_made
       end
 
-      it 'requests the correct resource on GET' do
+      it 'requests market all resource on GET' do
         properties.ownership_transfers(clip, 'market', 'all')
         expect(a_get("#{clip}/ownership-transfers/market/all")).to have_been_made
       end
@@ -154,7 +155,7 @@ describe Corelogic::API::PropertiesRepository do
 
       before do
         stub_request(:get, /property-detail/)
-          .to_return(body: response,
+          .to_return(body:    response,
                      headers: { content_type: 'application/vnd.corelogic.v1+json;charset=UTF-8' })
       end
 
@@ -221,6 +222,7 @@ describe Corelogic::API::PropertiesRepository do
 
       properties.search
     end
+
     it 'tries to re-authenticate' do
       expect(a_get('search')).to have_been_made.times(2)
       expect(a_request(:post, Corelogic::Authenticator::OAUTH_URL).with(query: { grant_type: 'client_credentials' })).to have_been_made.times(1)

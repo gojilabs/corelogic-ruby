@@ -6,7 +6,7 @@ module Corelogic
   class Property
     extend Dry::Initializer
 
-    option :clip
+    option :clip, as: :clip
     option :v1PropertyId, as: :v1_property_id, optional: true
     option :propertyAddress, as: :property_address do
       option :streetAddress, as: :street_address

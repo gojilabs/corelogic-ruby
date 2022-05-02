@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Corelogic
   class Error < StandardError
     attr_reader :code
@@ -18,22 +20,24 @@ module Corelogic
       500 => Corelogic::Error::InternalServerError
     }.freeze
 
-    private
-
-    def self.from_response(body)
-      message, status = parse_error(body)
-      new(message, status)
-    end
-
-    def self.parse_error(body)
-      message = body.fetch(:message, nil) || body.fetch(:fault, {}).fetch(:faultstring, nil)
-      status = body.fetch(:status, nil) || body.fetch(:fault, {}).fetch(:detail, {}).fetch(:errorcode, nil)
-      [message, status]
-    end
-
     def initialize(message = '', code = nil)
       super(message)
       @code = code
+    end
+
+    class << self
+      def from_response(body)
+        message, status = parse_error(body)
+        new(message, status)
+      end
+
+      private
+
+      def parse_error(body)
+        message = body.fetch(:message, nil) || body.fetch(:fault, {}).fetch(:faultstring, nil)
+        status = body.fetch(:status, nil) || body.fetch(:fault, {}).fetch(:detail, {}).fetch(:errorcode, nil)
+        [message, status]
+      end
     end
   end
 end

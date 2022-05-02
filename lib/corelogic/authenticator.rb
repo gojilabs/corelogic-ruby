@@ -27,8 +27,8 @@ module Corelogic
       http = Net::HTTP.new(uri.hostname, uri.port)
       http.use_ssl = true
 
-      response = http.start do |http|
-        http.request(request)
+      response = http.start do |client|
+        client.request(request)
       end
 
       token = Corelogic::ResponseParser.perform(response)[:access_token]

@@ -11,7 +11,7 @@ require 'corelogic'
 require 'factory_bot/json_strategy'
 
 pathname = Pathname.new(Gem::Specification.find_by_name('corelogic-ruby').gem_dir)
-Dir[pathname.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
+Dir[pathname.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
   config.expect_with :rspec do |c|

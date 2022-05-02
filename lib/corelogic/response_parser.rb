@@ -10,7 +10,7 @@ module Corelogic
         error_filter(response.code, response_body)
       end
 
-    private
+      private
 
       def error(code, body)
         klass = Corelogic::Error::ERRORS_MAP[code.to_i]
@@ -26,4 +26,3 @@ module Corelogic
     end
   end
 end
-

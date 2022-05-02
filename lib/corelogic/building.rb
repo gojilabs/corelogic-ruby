@@ -19,8 +19,8 @@ module Corelogic
       option :threeQtrBathroomsCount, as: :three_qtr_bathrooms_count
       option :bathroomFixturesCount, as: :bathroom_fixtures_count
       option :fireplacesCount, as: :fireplaces_count
-      option :livingAreaSquareFeet, as: :living_area_square_feet
-      option :totalAreaSquareFeet, as: :total_area_square_feet
+      option :livingAreaSquareFeet, proc(&:to_i), as: :living_area_square_feet
+      option :totalAreaSquareFeet, proc(&:to_i), as: :total_area_square_feet
       option :openAreasSquareFeet, as: :open_areas_square_feet
       option :officeSpaceSquareFeet, as: :office_space_square_feet
       option :elevatorsCount, as: :elevators_count

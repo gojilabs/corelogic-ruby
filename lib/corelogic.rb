@@ -37,18 +37,16 @@ module Corelogic
     end
   end
 
-  private
+  @container = ::Dry::Container.new
 
-  @@container = ::Dry::Container.new
-
-  AutoInject = ::Dry::AutoInject(@@container)
+  AutoInject = ::Dry::AutoInject(@container)
 
   def self.container
-    @@container
+    @container
   end
 
   def self.configuration
-    @@configuration ||= ::OpenStruct.new
+    @configuration ||= ::OpenStruct.new
   end
 end
 
