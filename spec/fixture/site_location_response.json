@@ -1,0 +1,85 @@
+{
+    "data": {
+        "clip": "1404385380",
+        "coordinatesParcel": {
+            "lat": 47.630116,
+            "lng": -122.528285
+        },
+        "coordinatesBlock": {
+            "lat": 47.630238,
+            "lng": -122.527759
+        },
+        "locationLegal": {
+            "subdivisionName": "SPT01-21-97-1",
+            "subdivisionTractNumber": null,
+            "subdivisionPlatBookNumber": null,
+            "subdivisionPlatPageNumber": null,
+            "blockNumber": "21",
+            "blockNumberSuffix": null,
+            "lotNumber": "B",
+            "lotNumberSuffix": null,
+            "description": "LOT B CITY OF BAINBRIDGE ISLAND SHORT PLAT NO. BI-76 RECORDED UNDER AUDITOR'S FILE NOS. 3050894/895. BEING A PORTION OF LOT B OF CITY OF WINSLOW SHORT PLAT NO. W-72 RECORDED UNDER AUDITOR FILE NO. 7706230108. BEING A PORTION OF THE SOUTHWEST QUARTER OF THE NORTHEAST QUARTER, SECTION 27, TOWNSHIP 25, RANGE 2 EAST, W.M., KITSAP COUNTY, WASHINGTON."
+        },
+        "locationSurvey": {
+            "range": "02E",
+            "township": "25",
+            "section": "27",
+            "quarterSection": "NE"
+        },
+        "neighborhood": {
+            "code": "7303604",
+            "name": "WINSLOW"
+        },
+        "municipality": {
+            "code": "200",
+            "name": "BAINBRIDGE ISLAND"
+        },
+        "town": {
+            "code": null
+        },
+        "jurisdictionCounty": {
+            "code": "BI"
+        },
+        "cbsa": {
+            "code": "14740",
+            "type": "Metro"
+        },
+        "censusTract": {
+            "id": "0909003017"
+        },
+        "taxRateArea": {
+            "code": "0215"
+        },
+        "taxDistrict": {
+            "name": "2E27251"
+        },
+        "landUseAndZoningCodes": {
+            "propertyTypeCode": "10",
+            "landUseCode": "163",
+            "stateLandUseCode": null,
+            "stateLandUseDescription": null,
+            "countyLandUseCode": "111",
+            "countyLandUseDescription": "SINGLE FAMILY RES",
+            "zoningCode": "CITY",
+            "zoningCodeDescription": "CITY",
+            "isManufacturedHome": null
+        },
+        "lot": {
+            "areaAcres": 0.31,
+            "areaSquareFeet": 13504,
+            "areaSquareFeetUsable": null,
+            "depthFeet": null,
+            "frontFeet": null,
+            "shapeCode": null,
+            "topographyType": null,
+            "easementTypeCode": null
+        },
+        "utilities": {
+            "fuelTypeCode": null,
+            "electricityWiringTypeCode": "EAV",
+            "sewerTypeCode": "001",
+            "utilitiesTypeCode": null,
+            "waterTypeCode": "WPU"
+        }
+    }
+}

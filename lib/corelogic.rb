@@ -1,12 +1,14 @@
-require "dry-container"
-require "dry-auto_inject"
-require "ostruct"
+# frozen_string_literal: true
 
-require "corelogic/connection"
-require "corelogic/authenticator"
-require "corelogic/response_parser"
-require "corelogic/property"
-require "corelogic/version"
+require 'dry-container'
+require 'dry-auto_inject'
+require 'ostruct'
+
+require 'corelogic/connection'
+require 'corelogic/authenticator'
+require 'corelogic/response_parser'
+require 'corelogic/property'
+require 'corelogic/version'
 
 module Corelogic
   class << self
@@ -27,7 +29,7 @@ module Corelogic
 
     def register!
       connection = ::Corelogic::Connection.new
-      authenticator = ::Corelogic::Authenticator.new(configuration.to_h)
+      authenticator = ::Corelogic::Authenticator.new(**configuration.to_h)
       parser_class = ::Corelogic::ResponseParser
       container.register :authenticator, -> { authenticator }
       container.register :connection, -> { connection }
@@ -35,20 +37,17 @@ module Corelogic
     end
   end
 
-  private
+  @container = ::Dry::Container.new
 
-  @@container = ::Dry::Container.new
-
-  AutoInject = ::Dry::AutoInject(@@container)
+  AutoInject = ::Dry::AutoInject(@container)
 
   def self.container
-    @@container
+    @container
   end
 
   def self.configuration
-    @@configuration ||= ::OpenStruct.new
+    @configuration ||= ::OpenStruct.new
   end
 end
 
-require "corelogic/api/properties_repository"
-
+require 'corelogic/api/properties_repository'

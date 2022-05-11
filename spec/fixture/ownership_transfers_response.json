@@ -1,0 +1,120 @@
+{
+  "metadata": {
+    "pageNumber": 1,
+    "pageSize": 1,
+    "totalRecords": 1,
+    "totalPages": 1
+  },
+  "items": [
+    {
+      "clip": "1404385380",
+      "transactionDetails": {
+        "primaryCategoryCode": "A",
+        "deedCategoryCode": "G",
+        "saleDateDerived": "2010-08-11",
+        "saleRecordingDateDerived": "2010-08-18",
+        "saleAmount": 625000,
+        "saleTypeCode": null,
+        "saleDocumentTypeCode": "WD",
+        "saleDocumentNumber": "201008180073",
+        "saleBookNumber": null,
+        "salePageNumber": null,
+        "ownershipTransferPercent": null,
+        "multiOrSplitParcelCode": null,
+        "isCashPurchase": true,
+        "isMortgagePurchase": false,
+        "isInterfamilyRelated": false,
+        "isInvestorPurchase": false,
+        "isResale": true,
+        "isShortSale": false,
+        "isForeclosureReo": false,
+        "isForeclosureReoSale": false
+      },
+      "recordedPropertyAddress": {
+        "streetAddress": null,
+        "streetAddressParsed": {
+          "houseNumber": "657",
+          "houseNumberSuffix": null,
+          "houseNumber2": null,
+          "direction": null,
+          "streetName": "ANNIE ROSE",
+          "mode": "LN",
+          "quadrant": "NW",
+          "unitNumber": null
+        },
+        "city": "BAINBRIDGE ISLAND",
+        "state": "WA",
+        "zipCode": "981102750",
+        "carrierRoute": "R017",
+        "county": "KITSAP"
+      },
+      "titleCompany": {
+        "name": "PACIFIC NW TITLE",
+        "code": "04832"
+      },
+      "propertyDetails": {
+        "actualYearBuilt": 1998,
+        "effectiveYearBuilt": null,
+        "isResidentialProperty": true,
+        "isNewConstruction": false
+      },
+      "landUseAndZoningCodes": {
+        "propertyTypeCode": "10",
+        "landUseCode": "163",
+        "stateLandUseDescription": null,
+        "countyLandUseDescription": null,
+        "zoningCode": "CITY"
+      },
+      "buyerDetails": {
+        "buyerNames": [
+          {
+            "sequenceNumber": 1,
+            "fullName": "KERN CHRISTOPH",
+            "lastName": "KERN",
+            "firstNameAndMiddleInitial": "CHRISTOPH",
+            "isCorporate": null
+          },
+          {
+            "sequenceNumber": 2,
+            "fullName": "GILBERT ALORIE",
+            "lastName": "GILBERT",
+            "firstNameAndMiddleInitial": "ALORIE",
+            "isCorporate": null
+          }
+        ],
+        "relationshipTypeCode": "HW",
+        "etalCode": "",
+        "occupancyCode": "S",
+        "ownershipRightsCode": null,
+        "mailingAddress": {
+          "careOfName": null,
+          "streetAddress": "657 ANNIE ROSE LN NW",
+          "streetAddressParsed": {
+            "houseNumber": "657",
+            "houseNumberSuffix": null,
+            "houseNumber2": null,
+            "direction": null,
+            "streetName": "ANNIE ROSE",
+            "mode": "LN",
+            "quadrant": "NW",
+            "unitNumber": null
+          },
+          "city": "BAINBRIDGE ISLAND",
+          "state": "WA",
+          "zipCode": "981102750",
+          "carrierRoute": "R017"
+        },
+        "hasPartialInterest": null,
+        "mailingOptOutIndicator": null
+      },
+      "sellerDetails": {
+        "sellerNames": [
+          {
+            "sequenceNumber": 1,
+            "fullName": "WHEELIS ROGER F"
+          }
+        ]
+      }
+    }
+  ]
+}

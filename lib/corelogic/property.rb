@@ -1,106 +1,67 @@
+# frozen_string_literal: true
+
 require 'dry-initializer'
 
 module Corelogic
   class Property
     extend Dry::Initializer
 
-    option :corelogicPropertyId, as: :id
-    option :compositePropertyId, as: :composite_id, optional: true
-    option :streetAddress, proc(&:to_s), as: :street_address, optional: true
-    option :houseNumber, proc(&:to_s), as: :house_number, optional: true
-    option :houseNumber2, proc(&:to_s), as: :house_number2, optional: true
-    option :preDirection, proc(&:to_s), as: :pre_direction, optional: true
-    option :streetName, proc(&:to_s), as: :street_name, optional: true
-    option :streetSuffix, proc(&:to_s), as: :street_suffix, optional: true
-    option :postDirection, proc(&:to_s), as: :post_direction, optional: true
-    option :unitNumber, proc(&:to_s), as: :unit_number, optional: true
-    option :city, proc(&:to_s), optional: true
-    option :zipcode, proc(&:to_s), optional: true
-    option :zip4, proc(&:to_s), optional: true
-    option :state, proc(&:to_s), optional: true
-    option :latitude, proc(&:to_f), optional: true
-    option :longitude, proc(&:to_f), optional: true
-    option :fipsCode, proc(&:to_s), as: :fips_code, optional: true
-    option :parcelNumber, proc(&:to_s), as: :parcel_number, optional: true
-    option :parcelSequence, proc(&:to_s), as: :parcel_sequence, optional: true
-    option :carrierRoute, proc(&:to_s), as: :carrier_route, optional: true
-    option :links, optional: true
+    option :clip, as: :clip
+    option :v1PropertyId, as: :v1_property_id, optional: true
+    option :propertyAddress, as: :property_address do
+      option :streetAddress, as: :street_address
+      option :propertyStreetAddressParsed, as: :property_street_address_parsed do
+        option :houseNumber, as: :house_number
+        option :streetNamePrefixDir, as: :street_name_prefix_dir
+        option :streetName, as: :street_name
+        option :streetNameSuffix, as: :street_name_suffix
+        option :streetNameSuffixDir, as: :street_name_suffix_dir
+        option :unitType, as: :unit_type
+        option :unitNumber, as: :unit_number
+      end
+      option :city
+      option :state
+      option :zipCode, as: :zip_code
+      option :zipPlus4, as: :zip_plus4
+      option :county
+    end
+    option :propertyAPN, as: :property_apn do
+      option :fipsCode, as: :fips_code
+      option :apnSequenceNumber, as: :apn_sequence_number
+      option :apnParcelNumberUnformatted, as: :apn_parcel_number_unformatted
+      option :apnParcelNumberFormatted, as: :apn_parcel_number_formatted
+      option :previousApnUnformatted, as: :previous_apn_unformatted
+      option :universalParcelId, as: :universal_parcel_id
+    end
+
+    attr_writer :clip, :ownership, :building, :tax_assessment, :site_location, :ownership_transfers
 
     def self.search(options)
       Corelogic.properties.search(options)
     end
 
     def ownership
-      @ownership ||= Corelogic.properties.ownership(self.id)
-    end
-
-    def ownership=(v)
-      @ownership = v
+      @ownership ||= Corelogic.properties.ownership(clip)
     end
 
     def building
-      @building ||= Corelogic.properties.building(self.id)
-    end
-
-    def building=(v)
-      @building = v
+      @building ||= Corelogic.properties.building(clip)
     end
 
     def tax_assessment
-      @tax_assessment ||= Corelogic.properties.tax_assessment(self.id)
+      @tax_assessment ||= Corelogic.properties.tax_assessment(clip)
     end
 
-    def tax_assessment=(v)
-      @tax_assessment = v
+    def site_location
+      @site_location ||= Corelogic.properties.site(clip)
     end
 
-    def site
-      @site ||= Corelogic.properties.site(self.id)
-    end
-
-    def site=(v)
-      @site = v
-    end
-
-    def location
-      @location ||= Corelogic.properties.location(self.id)
-    end
-
-    def location=(v)
-      @location = v
-    end
-
-    def owner_transfer
-      @owner_transfer ||= Corelogic.properties.owner_transfer(self.id)
-    end
-
-    def owner_transfer=(v)
-      @owner_transfer = v
-    end
-
-    def last_market_sale
-      @last_market_sale ||= Corelogic.properties.last_market_sale(self.id)
-    end
-
-    def last_market_sale=(v)
-      @last_market_sale = v
-    end
-
-    def prior_sale
-      @prior_sale ||= Corelogic.properties.prior_sale(self.id)
-    end
-
-    def prior_sale=(v)
-      @prior_sale = v
+    def ownership_transfers
+      @ownership_transfers ||= Corelogic.properties.ownership_transfers(clip)
     end
 
     def load_details
-      @details ||= Corelogic.properties.property_detail(self)
+      Corelogic.properties.property_detail(self)
     end
-
-    def assign_data!(params = {})
-      send(:initialize, params.merge(corelogicPropertyId: id))
-    end
-
   end
 end

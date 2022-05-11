@@ -1,32 +1,28 @@
+# frozen_string_literal: true
+
 module Corelogic
   class Collection
     extend Forwardable
     def_delegators :@members, *[].public_methods
 
     DEFAULT_RECORDS_LIMIT = 10
-    attr_reader :members, :klass, :raw_hash, :total_pages, :current_page, :limit_value, :total_records
+    attr_reader :members, :klass, :metadata, :items, :total_pages, :current_page, :limit_value, :total_records
 
     def initialize(klass, raw_hash)
       @klass = klass.is_a?(::String) ? ::Object.const_get(klass) : klass
-      @raw_hash = raw_hash
+      @metadata = raw_hash[:metadata]
+      @items = raw_hash[:items]
 
-      @total_pages = raw_hash[:totalPages] || 1
-      @current_page = raw_hash[:pageNumber] || 1
-      @limit_value = raw_hash[:pageSize] || DEFAULT_RECORDS_LIMIT
-      @total_records = raw_hash[:totalRecords]
+      @total_pages = @metadata[:totalPages] || 1
+      @current_page = @metadata[:pageNumber] || 1
+      @limit_value = @metadata[:pageSize] || DEFAULT_RECORDS_LIMIT
+      @total_records = @metadata[:totalRecords]
 
-      if !@raw_hash[:data].nil? && !@raw_hash[:data].empty?
-        @members = @raw_hash[:data].map do |record|
-          @klass.new(record)
-        end
-      else
-        @members = []
-      end
+      @members = @items.present? ? @items.map { |record| @klass.new(**record) } : []
     end
 
     def to_a
       @members
     end
-
   end
 end

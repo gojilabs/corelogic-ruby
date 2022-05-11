@@ -1,0 +1,178 @@
+{
+    "data": {
+        "clip": "1404385380",
+        "allBuildingsSummary": {
+            "buildingsCount": 1,
+            "unitsCount": null,
+            "roomsCount": null,
+            "bedroomsCount": 3,
+            "bathroomsCount": 3,
+            "fullBathroomsCount": 2,
+            "halfBathroomsCount": 1,
+            "oneQtrBathroomsCount": null,
+            "threeQtrBathroomsCount": null,
+            "bathroomFixturesCount": null,
+            "fireplacesCount": 1,
+            "livingAreaSquareFeet": 1895,
+            "totalAreaSquareFeet": 1895,
+            "openAreasSquareFeet": null,
+            "officeSpaceSquareFeet": null,
+            "elevatorsCount": null,
+            "loadingDocksCount": null,
+            "railSpursCount": null,
+            "truckDoorsCount": null
+        },
+        "buildings": [
+            {
+                "structureId": {
+                    "sequenceNumber": 1,
+                    "compositeBuildingLinkageKey": "5303527250211982004                               001001",
+                    "buildingName": null,
+                    "buildingNumber": "R02",
+                    "buildingSectionNumber": null,
+                    "buildingComments": null
+                },
+                "structureClassification": {
+                    "buildingTypeCode": "R00",
+                    "buildingClassCode": null,
+                    "gradeTypeCode": null,
+                    "fireSprinklerTypeCode": null,
+                    "fireInsuranceTypeCode": null
+                },
+                "structureFootprint": {
+                    "widthFeet": null,
+                    "depthFeet": null
+                },
+                "structureUnitsSummary": {
+                    "vacantCount": null,
+                    "residentialCount": null,
+                    "commercialCount": null
+                },
+                "structureVerticalProfile": {
+                    "storiesCount": 2,
+                    "storiesTypeCode": null,
+                    "floorNumber": null
+                },
+                "constructionDetails": {
+                    "yearBuilt": 1998,
+                    "effectiveYearBuilt": null,
+                    "buildingStyleTypeCode": null,
+                    "buildingQualityTypeCode": "QGO",
+                    "frameTypeCode": null,
+                    "foundationTypeCode": null,
+                    "constructionTypeCode": null,
+                    "buildingRemodelTypeCode": null,
+                    "buildingImprovementConditionCode": "AVE",
+                    "buildingImprovementTypeCode": null,
+                    "buildingImprovementValue": null
+                },
+                "structureExterior": {
+                    "patios": {
+                        "count": 3,
+                        "typeCode": "30W",
+                        "areaSquareFeet": 251
+                    },
+                    "porches": {
+                        "count": null,
+                        "typeCode": null,
+                        "areaSquareFeet": null,
+                        "secondPorchAreaSquareFeet": null
+                    },
+                    "parking": {
+                        "typeCode": "920",
+                        "garageTypeCode": "920",
+                        "parkingSpacesCount": null,
+                        "primaryAreaSquareFeet": 576,
+                        "secondAreaSquareFeet": null,
+                        "carportAreaSquareFeet": null
+                    },
+                    "pool": {},
+                    "walls": {
+                        "typeCode": "WOS"
+                    },
+                    "roof": {
+                        "typeCode": "015",
+                        "coverTypeCode": "015"
+                    }
+                },
+                "structureInterior": {
+                    "attic": {
+                        "typeCode": null
+                    },
+                    "walls": {
+                        "typeCode": null
+                    },
+                    "basement": {
+                        "typeCode": null,
+                        "finishTypeCode": null,
+                        "finishPercent": null
+                    },
+                    "flooring": {
+                        "typeCode": null,
+                        "coverTypeCode": null
+                    },
+                    "ceiling": {
+                        "typeCode": null,
+                        "heightFeet": null
+                    },
+                    "bathroomFixtures": {
+                        "count": null
+                    }
+                },
+                "interiorArea": {
+                    "universalBuildingAreaSquareFeet": 1895,
+                    "universalBuildingAreaSquareFeetSourceCode": "L",
+                    "buildingAreaSquareFeet": 1895,
+                    "buildingAdjustedAreaSquareFeet": null,
+                    "buildingGrossAreaSquareFeet": null,
+                    "livingAreaSquareFeet": 1895,
+                    "aboveGradeAreaSquareFeet": null,
+                    "groundFloorAreaSquareFeet": 1055,
+                    "basementAreaSquareFeet": null,
+                    "finishedBasementAreaSquareFeet": null,
+                    "unfinishedBasementAreaSquareFeet": null,
+                    "aboveGroundFloorAreaSquareFeet": null,
+                    "buildingAdditionsAreaSquareFeet": null,
+                    "entryLevelFloorAreaSquareFeet": null,
+                    "secondFloorAreaSquareFeet": 840,
+                    "thirdFloorAreaSquareFeet": null
+                },
+                "interiorRooms": {
+                    "totalCount": null,
+                    "bedroomsCount": 3,
+                    "bathroomsCount": null,
+                    "fullBathroomsCount": 2,
+                    "halfBathroomsCount": 1,
+                    "oneQtrBathroomsCount": null,
+                    "threeQtrBathroomsCount": null,
+                    "kitchensCount": null,
+                    "familyRoomsCount": null,
+                    "livingRoomsCount": null,
+                    "basementRoomsCount": null
+                },
+                "structureFeatures": {
+                    "airConditioning": {
+                        "typeCode": null
+                    },
+                    "firePlaces": {
+                        "typeCode": "0G0",
+                        "count": 1
+                    },
+                    "heating": {
+                        "typeCode": "RD0"
+                    },
+                    "plumbing": {
+                        "typeCode": null
+                    },
+                    "passengerElevators": {
+                        "count": null
+                    },
+                    "dormerWindows": {
+                        "count": null
+                    }
+                }
+            }
+        ]
+    }
+}
+

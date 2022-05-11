@@ -1,193 +1,202 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Corelogic::API::PropertiesRepository do
   subject(:properties) { Corelogic.properties }
-  let(:properties_count) { 3 }
-  let(:success_body) { json(:success_body, count: properties_count) }
+
   let(:connection) { Corelogic.container['connection'] }
   let(:oauth_error_body) { json(:oauth_error_body) }
   let(:oauth_success_body) { json(:oauth_success_body) }
 
-  context 'authenticated connection' do
-    let(:id) { '00000:1111111' }
-    let(:common_response) { json(:common_response, corelogicPropertyId: id) }
+  let(:clip) { '8623812756' }
 
+  context 'authenticated connection' do
     before do
       allow(connection).to receive(:authenticated?).and_return(true)
     end
 
-    describe '#serach' do
+    describe '#search' do
+      let(:response) { json(:properties_response, fixture: './spec/fixture/properties_response.json') }
+
       before do
-        stub_request(:get, Corelogic::Connection::BASE_PATH + 'property').
-          to_return(body: success_body, headers: {content_type: 'application/vnd.corelogic.v1+json;charset=UTF-8'})
+        stub_request(:get, "#{Corelogic::Connection::BASE_PATH}search")
+          .to_return(
+            body:    response,
+            headers: { content_type: 'application/vnd.corelogic.v1+json;charset=UTF-8' }
+          )
       end
+
       it 'requests the correct resource on GET' do
         properties.search
-        expect(a_get('property')).to have_been_made
+        expect(a_get('search')).to have_been_made
       end
 
       it 'returns properties' do
         result = properties.search
         expect(result).to be_instance_of(Array) and all(be_instance_of(Corelogic::Property))
-        expect(result.size).to eq(properties_count)
+        expect(result).to matches_properties(JSON.parse(response)['items'])
       end
     end
 
     describe '#ownership' do
+      let(:response) { json(:ownership_response, fixture: './spec/fixture/ownership_response.json') }
+
       before do
-        stub_request(:get, /ownership/).
-          to_return(body: common_response, headers: {content_type: 'application/vnd.corelogic.v1+json;charset=UTF-8'})
+        stub_request(:get, /ownership/)
+          .to_return(body:    response,
+                     headers: { content_type: 'application/vnd.corelogic.v1+json;charset=UTF-8' })
       end
 
       it 'requests the correct resource on GET' do
-        properties.ownership(id)
-        expect(a_get("property/#{id}/ownership")).to have_been_made
+        properties.ownership(clip)
+        expect(a_get("#{clip}/ownership")).to have_been_made
       end
 
-      it 'returns `Corelogic::Property::Ownership` with id' do
-        result = properties.ownership(id)
-        expect(result).to be_instance_of(Corelogic::Property::Ownership)
-        expect(result.corelogic_property_id).to eq id
+      it 'returns `Corelogic::Ownership` with clip' do
+        result = properties.ownership(clip)
+        expect(result).to be_instance_of(Corelogic::Ownership)
+        expect(result).to matches_properties(JSON.parse(response)['data'])
       end
     end
 
-    describe '#building' do
+    describe '#buildings' do
+      let(:response) { json(:buildings_response, fixture: './spec/fixture/building_response.json') }
+
       before do
-        stub_request(:get, /building/).
-          to_return(body: common_response, headers: {content_type: 'application/vnd.corelogic.v1+json;charset=UTF-8'})
+        stub_request(:get, /buildings/)
+          .to_return(body:    response,
+                     headers: { content_type: 'application/vnd.corelogic.v1+json;charset=UTF-8' })
       end
 
       it 'requests the correct resource on GET' do
-        properties.building(id)
-        expect(a_get("property/#{id}/building")).to have_been_made
+        properties.building(clip)
+        expect(a_get("#{clip}/buildings")).to have_been_made
       end
 
-      it 'returns `Corelogic::Property::Building` with id' do
-        result = properties.building(id)
-        expect(result).to be_instance_of(Corelogic::Property::Building)
-        expect(result.corelogic_property_id).to eq id
+      it 'returns `Corelogic::Building` with clip' do
+        result = properties.building(clip)
+        expect(result).to be_instance_of(Corelogic::Building)
+        expect(result).to matches_properties(JSON.parse(response)['data'])
       end
     end
 
     describe '#tax_assessment' do
+      let(:response) { json(:tax_assessments_response, fixture: './spec/fixture/tax_assessments_response.json') }
+
       before do
-        stub_request(:get, /tax-assessment/).
-          to_return(body: common_response, headers: {content_type: 'application/vnd.corelogic.v1+json;charset=UTF-8'})
+        stub_request(:get, /tax-assessments/)
+          .to_return(body:    response,
+                     headers: { content_type: 'application/vnd.corelogic.v1+json;charset=UTF-8' })
       end
 
       it 'requests the correct resource on GET' do
-        properties.tax_assessment(id)
-        expect(a_get("property/#{id}/tax-assessment")).to have_been_made
+        properties.tax_assessment(clip)
+        expect(a_get("#{clip}/tax-assessments/latest")).to have_been_made
       end
 
-      it 'returns `Corelogic::Property::TaxAssessment` with id' do
-        result = properties.tax_assessment(id)
-        expect(result).to be_instance_of(Corelogic::Property::TaxAssessment)
-        expect(result.corelogic_property_id).to eq id
+      it 'returns `Corelogic::TaxAssessments` with clip' do
+        result = properties.tax_assessment(clip)
+        expect(result).to be_instance_of(Array) and all(be_instance_of(Corelogic::TaxAssessment))
+        expect(result.first).to matches_properties(JSON.parse(response)['items'].first)
       end
     end
 
-    describe '#site' do
+    describe '#site-location' do
+      let(:response) { json(:site_location_response, fixture: './spec/fixture/site_location_response.json') }
+
       before do
-        stub_request(:get, /site/).
-          to_return(body: common_response, headers: {content_type: 'application/vnd.corelogic.v1+json;charset=UTF-8'})
+        stub_request(:get, /site-location/)
+          .to_return(body:    response,
+                     headers: { content_type: 'application/vnd.corelogic.v1+json;charset=UTF-8' })
       end
 
       it 'requests the correct resource on GET' do
-        properties.site(id)
-        expect(a_get("property/#{id}/site")).to have_been_made
+        properties.site_location(clip)
+        expect(a_get("#{clip}/site-location")).to have_been_made
       end
 
-      it 'returns `Corelogic::Property::Site` with id' do
-        result = properties.site(id)
-        expect(result).to be_instance_of(Corelogic::Property::Site)
-        expect(result.corelogic_property_id).to eq id
-      end
-    end
-
-    describe '#location' do
-      before do
-        stub_request(:get, /location/).
-          to_return(body: common_response, headers: {content_type: 'application/vnd.corelogic.v1+json;charset=UTF-8'})
-      end
-
-      it 'requests the correct resource on GET' do
-        properties.location(id)
-        expect(a_get("property/#{id}/location")).to have_been_made
-      end
-
-      it 'returns `Corelogic::Property::Location` with id' do
-        result = properties.location(id)
-        expect(result).to be_instance_of(Corelogic::Property::Location)
-        expect(result.corelogic_property_id).to eq id
+      it 'returns `Corelogic::SiteLocation` with clip' do
+        result = properties.site_location(clip)
+        expect(result).to be_instance_of(Corelogic::SiteLocation)
+        expect(result).to matches_properties(JSON.parse(response)['data'])
       end
     end
 
     describe '#owner_transfer' do
+      let(:response) { json(:ownership_transfers_response, fixture: './spec/fixture/ownership_transfers_response.json') }
+
       before do
-        stub_request(:get, /owner-transfer/).
-          to_return(body: common_response, headers: {content_type: 'application/vnd.corelogic.v1+json;charset=UTF-8'})
+        stub_request(:get, /ownership-transfers/)
+          .to_return(body:    response,
+                     headers: { content_type: 'application/vnd.corelogic.v1+json;charset=UTF-8' })
       end
 
-      it 'requests the correct resource on GET' do
-        properties.owner_transfer(id)
-        expect(a_get("property/#{id}/owner-transfer")).to have_been_made
+      it 'requests market latest resource on GET' do
+        properties.ownership_transfers(clip)
+        expect(a_get("#{clip}/ownership-transfers/market/latest")).to have_been_made
       end
 
-      it 'returns `Corelogic::Property::OwnerTransfer` with id' do
-        result = properties.owner_transfer(id)
-        expect(result).to be_instance_of(Corelogic::Property::OwnerTransfer)
-        expect(result.corelogic_property_id).to eq id
+      it 'requests market all resource on GET' do
+        properties.ownership_transfers(clip, 'market', 'all')
+        expect(a_get("#{clip}/ownership-transfers/market/all")).to have_been_made
+      end
+
+      it 'returns `Corelogic::OwnershipTransfers` with clip' do
+        result = properties.ownership_transfers(clip)
+        expect(result).to be_instance_of(Array) and all(be_instance_of(Corelogic::OwnershipTransfer))
+        expect(result.first).to matches_properties(JSON.parse(response)['items'].first)
       end
     end
 
-    describe '#last_market_sale' do
+    describe '#property_detail' do
+      let(:property) { build(:property, clip:, fixture: './spec/fixture/property.json') }
+      let(:response) { json(:property_detail_response, fixture: './spec/fixture/property_detail_response.json') }
+
       before do
-        stub_request(:get, /last-market-sale/).
-          to_return(body: common_response, headers: {content_type: 'application/vnd.corelogic.v1+json;charset=UTF-8'})
+        stub_request(:get, /property-detail/)
+          .to_return(body:    response,
+                     headers: { content_type: 'application/vnd.corelogic.v1+json;charset=UTF-8' })
       end
 
       it 'requests the correct resource on GET' do
-        properties.last_market_sale(id)
-        expect(a_get("property/#{id}/last-market-sale")).to have_been_made
+        properties.property_detail(property)
+        expect(a_get("#{clip}/property-detail")).to have_been_made
       end
 
-      it 'returns `Corelogic::Property::LastMarketSale` with id' do
-        result = properties.last_market_sale(id)
-        expect(result).to be_instance_of(Corelogic::Property::LastMarketSale)
-        expect(result.corelogic_property_id).to eq id
-      end
-    end
+      it 'returns `Corelogic::PropertyDetail` with clip' do
+        result = properties.property_detail(property)
 
-    describe '#prior_sale' do
-      before do
-        stub_request(:get, /prior-sale/).
-          to_return(body: common_response, headers: {content_type: 'application/vnd.corelogic.v1+json;charset=UTF-8'})
-      end
+        expect(result).to be_instance_of(Corelogic::Property)
+        expect(result.building).to be_instance_of(Corelogic::Building)
+        expect(result.building).to matches_properties(JSON.parse(response)['buildings']['data'])
 
-      it 'requests the correct resource on GET' do
-        properties.prior_sale(id)
-        expect(a_get("property/#{id}/prior-sale")).to have_been_made
-      end
+        expect(result.ownership).to be_instance_of(Corelogic::Ownership)
+        expect(result.ownership).to matches_properties(JSON.parse(response)['ownership']['data'])
 
-      it 'returns `Corelogic::Property::PriorSale` with id' do
-        result = properties.prior_sale(id)
-        expect(result).to be_instance_of(Corelogic::Property::PriorSale)
-        expect(result.corelogic_property_id).to eq id
+        expect(result.ownership_transfers).to be_instance_of(Array) and all(be_instance_of(Corelogic::OwnershipTransfer))
+        expect(result.ownership_transfers).to matches_properties(JSON.parse(response)['mostRecentOwnerTransfer']['items'])
+
+        expect(result.site_location).to be_instance_of(Corelogic::SiteLocation)
+        expect(result.site_location).to matches_properties(JSON.parse(response)['siteLocation']['data'])
+
+        expect(result.tax_assessment).to be_instance_of(Array) and all(be_instance_of(Corelogic::TaxAssessment))
+        expect(result.tax_assessment).to matches_properties(JSON.parse(response)['taxAssessment']['items'])
       end
     end
-
   end
 
   context 'not authenticated connection' do
+    let(:properties_response) { json(:properties_response, fixture: './spec/fixture/properties_response.json') }
+
     before do
       allow(connection).to receive(:authenticated?).and_return(false)
       connection.bearer_token = nil
-      stub_request(:post, Corelogic::Authenticator::OAUTH_URL).
-        with(query: {grant_type: 'client_credentials'}).
-        to_return({body: oauth_success_body, headers: {content_type: 'application/json'}, status: 200})
-      stub_request(:get, Corelogic::Connection::BASE_PATH + 'property').
-        to_return({body: success_body, headers: {content_type: 'application/json'}, status: 200})
+      stub_request(:post, Corelogic::Authenticator::OAUTH_URL)
+        .with(query: { grant_type: 'client_credentials' })
+        .to_return({ body: oauth_success_body, headers: { content_type: 'application/json' }, status: 200 })
+      stub_request(:get, "#{Corelogic::Connection::BASE_PATH}search")
+        .to_return({ body: properties_response, headers: { content_type: 'application/json' }, status: 200 })
     end
 
     it 'authenticates connection' do
@@ -197,23 +206,26 @@ describe Corelogic::API::PropertiesRepository do
   end
 
   context 'the bearer token has expired' do
+    let(:properties_response) { json(:properties_response, fixture: './spec/fixture/properties_response.json') }
+
     before do
       allow(connection).to receive(:authenticated?).and_return(true)
-      stub_request(:get, Corelogic::Connection::BASE_PATH + 'property').
-        to_return(
-          {body: oauth_error_body, headers: {content_type: 'application/json'}, status: 401},
-          {body: success_body, headers: {content_type: 'application/json'}, status: 200}
+      stub_request(:get, "#{Corelogic::Connection::BASE_PATH}search")
+        .to_return(
+          { body: oauth_error_body, headers: { content_type: 'application/json' }, status: 401 },
+          { body: properties_response, headers: { content_type: 'application/json' }, status: 200 }
         )
 
-      stub_request(:post, Corelogic::Authenticator::OAUTH_URL).
-        with(query: {grant_type: 'client_credentials'}).
-        to_return({body: oauth_success_body, headers: {content_type: 'application/json'}, status: 200})
+      stub_request(:post, Corelogic::Authenticator::OAUTH_URL)
+        .with(query: { grant_type: 'client_credentials' })
+        .to_return({ body: oauth_success_body, headers: { content_type: 'application/json' }, status: 200 })
 
       properties.search
     end
+
     it 'tries to re-authenticate' do
-      expect(a_get('property')).to have_been_made.times(2)
-      expect(a_request(:post, Corelogic::Authenticator::OAUTH_URL).with(query: {grant_type: 'client_credentials'})).to have_been_made.times(1)
+      expect(a_get('search')).to have_been_made.times(2)
+      expect(a_request(:post, Corelogic::Authenticator::OAUTH_URL).with(query: { grant_type: 'client_credentials' })).to have_been_made.times(1)
     end
   end
 end

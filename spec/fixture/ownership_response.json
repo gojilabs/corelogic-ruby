@@ -1,0 +1,49 @@
+{
+    "data": {
+        "clip": "1404385380",
+        "currentOwners": {
+            "ownerNames": [
+                {
+                    "sequenceNumber": 1,
+                    "fullName": "KELCH JONATHAN M",
+                    "firstNameAndMiddleInitial": "JONATHAN M",
+                    "lastName": "KELCH",
+                    "isCorporate": false
+                },
+                {
+                    "sequenceNumber": 2,
+                    "fullName": "KELCH STEPHANIE O",
+                    "firstNameAndMiddleInitial": "STEPHANIE O",
+                    "lastName": "KELCH",
+                    "isCorporate": false
+                }
+            ],
+            "relationshipTypeCode": null,
+            "ownerEtalCode": null,
+            "occupancyCode": "A",
+            "ownershipRightsCode": null
+        },
+        "currentOwnerMailingInfo": {
+            "mailingAddress": {
+                "careOfName": null,
+                "streetAddress": "13221 3RD AVE NW",
+                "streetAddressParsed": {
+                    "houseNumber": "13221",
+                    "houseNumberSuffix": null,
+                    "houseNumber2": null,
+                    "direction": null,
+                    "streetName": "3RD",
+                    "mailingMode": "AVE",
+                    "quadrant": "NW",
+                    "unitNumber": null
+                },
+                "city": "SEATTLE",
+                "state": "WA",
+                "zipCode": "98177",
+                "carrierRoute": "C082",
+                "foreignAddress": null
+            },
+            "ownerMailingOptOutIndicator": "Y"
+        }
+    }
+}

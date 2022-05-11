@@ -1,72 +1,57 @@
-require "corelogic/response_parser"
-require "corelogic/collection"
-require "corelogic/property"
-require "corelogic/property/ownership"
-require "corelogic/property/building"
-require "corelogic/property/tax_assessment"
-require "corelogic/property/site"
-require "corelogic/property/location"
-require "corelogic/property/owner_transfer"
-require "corelogic/property/last_market_sale"
-require "corelogic/property/prior_sale"
+# frozen_string_literal: true
+
+require 'logger'
+require 'corelogic/response_parser'
+require 'corelogic/building'
+require 'corelogic/collection'
+require 'corelogic/property'
+require 'corelogic/property_detail'
+require 'corelogic/ownership'
+require 'corelogic/ownership_transfer'
+require 'corelogic/site_location'
+require 'corelogic/tax_assessment'
 
 module Corelogic
   module API
     class PropertiesRepository
-      include Corelogic::AutoInject["connection"]
-      include Corelogic::AutoInject["response_parser"]
-      include Corelogic::AutoInject["authenticator"]
+      include Corelogic::AutoInject['connection']
+      include Corelogic::AutoInject['response_parser']
+      include Corelogic::AutoInject['authenticator']
 
-      SEARCH_PATH = 'property'
+      SEARCH_PATH = 'search'
 
       def search(options = {})
-        Corelogic::Collection.new(Corelogic::Property, perform_response(SEARCH_PATH, options))
+        Corelogic::Collection.new(Corelogic::Property, **perform_response(SEARCH_PATH, options))
       end
 
-      def ownership(property_id)
-        Property::Ownership.new(perform_response("property/#{property_id}/ownership"))
+      def ownership(clip)
+        Corelogic::Ownership.new(**perform_response("#{clip}/ownership")[:data])
       end
 
-      def building(property_id)
-        Property::Building.new(perform_response("property/#{property_id}/building"))
+      def building(clip)
+        Corelogic::Building.new(**perform_response("#{clip}/buildings")[:data])
       end
 
-      def tax_assessment(property_id)
-        Property::TaxAssessment.new(perform_response("property/#{property_id}/tax-assessment"))
+      def tax_assessment(clip)
+        Corelogic::Collection.new(Corelogic::TaxAssessment, **perform_response("#{clip}/tax-assessments/latest"))
       end
 
-      def site(property_id)
-        Property::Site.new(perform_response("property/#{property_id}/site"))
+      def site_location(clip)
+        Corelogic::SiteLocation.new(**perform_response("#{clip}/site-location")[:data])
       end
 
-      def location(property_id)
-        Property::Location.new(perform_response("property/#{property_id}/location"))
-      end
-
-      def owner_transfer(property_id)
-        Property::OwnerTransfer.new(perform_response("property/#{property_id}/owner-transfer"))
-      end
-
-      def last_market_sale(property_id)
-        Property::LastMarketSale.new(perform_response("property/#{property_id}/last-market-sale"))
-      end
-
-      def prior_sale(property_id)
-        Property::PriorSale.new(perform_response("property/#{property_id}/prior-sale"))
+      def ownership_transfers(clip, sale_type = 'market', latest = 'latest')
+        Corelogic::Collection.new(Corelogic::OwnershipTransfer, **perform_response("#{clip}/ownership-transfers/#{sale_type}/#{latest}"))
       end
 
       def property_detail(property)
-        response = perform_response("property/#{property.id}/property-detail")
+        response = perform_response("#{property.clip}/property-detail")
 
-        property.assign_data!(response[:property])
-        property.ownership = Property::Ownership.new(response[:ownership]) if response[:ownership]
-        property.building = Property::Building.new(response[:building]) if response[:building]
-        property.tax_assessment = Property::TaxAssessment.new(response[:taxAssessment]) if response[:taxAssessment]
-        property.site = Property::Site.new(response[:site]) if response[:site]
-        property.location = Property::Location.new(response[:location]) if response[:location]
-        property.owner_transfer = Property::OwnerTransfer.new(response[:ownerTransfer]) if response[:ownerTransfer]
-        property.last_market_sale = Property::LastMarketSale.new(response[:lastMarketSale]) if response[:lastMarketSale]
-        property.prior_sale = Property::PriorSale.new(response[:priorSale]) if response[:priorSale]
+        property.building = Corelogic::Building.new(**response[:buildings][:data]) if response[:buildings]
+        property.ownership = Corelogic::Ownership.new(**response[:ownership][:data]) if response[:ownership]
+        property.ownership_transfers = Corelogic::Collection.new(Corelogic::OwnershipTransfer, **response[:mostRecentOwnerTransfer]) if response[:mostRecentOwnerTransfer]
+        property.site_location = Corelogic::SiteLocation.new(**response[:siteLocation][:data]) if response[:siteLocation]
+        property.tax_assessment = Corelogic::Collection.new(Corelogic::TaxAssessment, **response[:taxAssessment]) if response[:taxAssessment]
         property
       end
 
@@ -78,25 +63,26 @@ module Corelogic
           try += 1
           response_parser.perform(perform_get(path, options))
         rescue Corelogic::Error::Unauthorized => e
-          puts e.message
+          logger = Logger.new($stdout)
+          logger.debug e.message
           if try < 2
-            puts "Retry: #{try}" if ENV['RAILS_ENV'] && ENV['RAILS_ENV'] == 'development'
-            perform_connection(true)
+            logger.debug { "Retry: #{try}" } if ENV.fetch('RAILS_ENV', nil) && ENV.fetch('RAILS_ENV', nil) == 'development'
+            perform_connection(force: true)
             retry
           end
         end
       end
 
       def perform_get(path, options = {})
-        perform_connection.get(path, params: options)
+        perform_connection.get(path, options)
       end
 
-      def perform_connection(force = false)
+      def perform_connection(force: false)
         return authenticator.call(connection, force: true) if force
         return connection if connection.authenticated?
+
         authenticator.call(connection)
       end
-
     end
   end
 end

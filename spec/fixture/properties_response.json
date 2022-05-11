@@ -1,0 +1,41 @@
+{
+    "metadata": {
+        "pageNumber": 1,
+        "pageSize": 1,
+        "totalRecords": 1,
+        "totalPages": 1
+    },
+    "items": [
+        {
+            "clip": "1404385380",
+            "v1PropertyId": "53035:15220198",
+            "propertyAddress": {
+                "streetAddress": "657 ANNIE ROSE LN NW",
+                "propertyStreetAddressParsed": {
+                    "houseNumber": "657",
+                    "streetNamePrefixDir": null,
+                    "streetName": "ANNIE ROSE",
+                    "streetNameSuffix": "LN",
+                    "streetNameSuffixDir": "NW",
+                    "unitType": null,
+                    "unitNumber": null
+                },
+                "city": "BAINBRIDGE ISLAND",
+                "state": "WA",
+                "zipCode": "98110",
+                "zipPlus4": "2750",
+                "county": "KITSAP"
+            },
+            "propertyAPN": {
+                "fipsCode": "53035",
+                "apnSequenceNumber": 1,
+                "apnParcelNumberUnformatted": "27250211982004",
+                "apnParcelNumberFormatted": "272502-1-198-20-04",
+                "previousApnUnformatted": null,
+                "universalParcelId": "15220198"
+            }
+        }
+    ],
+    "messages": []
+}
+

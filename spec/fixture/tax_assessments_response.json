@@ -1,0 +1,101 @@
+{
+    "metadata": {
+        "pageNumber": 1,
+        "pageSize": 1,
+        "totalRecords": 1,
+        "totalPages": 1
+    },
+    "items": [
+        {
+            "clip": "1404385380",
+            "taxAmount": {
+                "billedYear": 2022,
+                "delinquentYear": null,
+                "areaCode": "0215",
+                "areaCodeDescription": null,
+                "propertyTaxRate": null,
+                "calculatedTotalExemptionAmount": null,
+                "totalTaxExemptionAmount": null,
+                "totalTaxAmount": 9033.06,
+                "countyTaxAmount": 8827.06,
+                "schoolTaxAmount": null,
+                "townTaxAmount": null,
+                "villageTaxAmount": null,
+                "netTaxAmount": null
+            },
+            "taxExemptions": {
+                "commercial": [],
+                "residential": []
+            },
+            "assessedValue": {
+                "taxAssessedYear": 2021,
+                "calculatedTotalValue": 896020,
+                "calculatedLandValue": 216300,
+                "calculatedImprovementValue": 679720,
+                "calculatedImprovementValuePercentage": 76,
+                "calculatedTotalValueSourceCode": "A",
+                "taxableValue": 896020,
+                "taxableImprovementValue": 679720,
+                "taxableLandValue": 216300,
+                "taxableOtherValue": null
+            },
+            "taxrollUpdate": {
+                "lastAssessorUpdateDate": "2022-02-17",
+                "taxrollCertificationDate": "2021-10-01"
+            },
+            "schoolDistricts": {
+                "school": {
+                    "code": "303",
+                    "name": "BAINBRIDGE ISLAND",
+                    "elementary": {
+                        "code": null,
+                        "name": null
+                    },
+                    "middle": {
+                        "code": null,
+                        "name": null
+                    },
+                    "high": {
+                        "code": null,
+                        "name": null
+                    },
+                    "communityCollege": {
+                        "code": null,
+                        "name": null
+                    }
+                }
+            },
+            "serviceDistricts": {
+                "fire": {
+                    "code": null,
+                    "name": null
+                },
+                "trash": {
+                    "code": null,
+                    "name": null
+                },
+                "lighting": {
+                    "code": null,
+                    "name": null
+                },
+                "tax": {
+                    "code": null,
+                    "name": null
+                },
+                "sewer": {
+                    "code": null,
+                    "name": null
+                },
+                "utility": {
+                    "code": null,
+                    "name": null
+                },
+                "water": {
+                    "code": null,
+                    "name": null
+                }
+            }
+        }
+    ]
+}
+

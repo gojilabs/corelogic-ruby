@@ -1,0 +1,653 @@
+{
+    "buildings": {
+        "data": {
+            "clip": "1404385380",
+            "allBuildingsSummary": {
+                "buildingsCount": 1,
+                "unitsCount": null,
+                "roomsCount": null,
+                "bedroomsCount": 3,
+                "bathroomsCount": 3,
+                "fullBathroomsCount": 2,
+                "halfBathroomsCount": 1,
+                "oneQtrBathroomsCount": null,
+                "threeQtrBathroomsCount": null,
+                "bathroomFixturesCount": null,
+                "fireplacesCount": 1,
+                "livingAreaSquareFeet": 1895,
+                "totalAreaSquareFeet": 1895,
+                "openAreasSquareFeet": null,
+                "officeSpaceSquareFeet": null,
+                "elevatorsCount": null,
+                "loadingDocksCount": null,
+                "railSpursCount": null,
+                "truckDoorsCount": null
+            },
+            "buildings": [
+                {
+                    "structureId": {
+                        "sequenceNumber": 1,
+                        "compositeBuildingLinkageKey": "5303527250211982004                               001001",
+                        "buildingName": null,
+                        "buildingNumber": "R02",
+                        "buildingSectionNumber": null,
+                        "buildingComments": null
+                    },
+                    "structureClassification": {
+                        "buildingTypeCode": "R00",
+                        "buildingClassCode": null,
+                        "gradeTypeCode": null,
+                        "fireSprinklerTypeCode": null,
+                        "fireInsuranceTypeCode": null
+                    },
+                    "structureFootprint": {
+                        "widthFeet": null,
+                        "depthFeet": null
+                    },
+                    "structureUnitsSummary": {
+                        "vacantCount": null,
+                        "residentialCount": null,
+                        "commercialCount": null
+                    },
+                    "structureVerticalProfile": {
+                        "storiesCount": 2,
+                        "storiesTypeCode": null,
+                        "floorNumber": null
+                    },
+                    "constructionDetails": {
+                        "yearBuilt": 1998,
+                        "effectiveYearBuilt": null,
+                        "buildingStyleTypeCode": null,
+                        "buildingQualityTypeCode": "QGO",
+                        "frameTypeCode": null,
+                        "foundationTypeCode": null,
+                        "constructionTypeCode": null,
+                        "buildingRemodelTypeCode": null,
+                        "buildingImprovementConditionCode": "AVE",
+                        "buildingImprovementTypeCode": null,
+                        "buildingImprovementValue": null
+                    },
+                    "structureExterior": {
+                        "patios": {
+                            "count": 3,
+                            "typeCode": "30W",
+                            "areaSquareFeet": 251
+                        },
+                        "porches": {
+                            "count": null,
+                            "typeCode": null,
+                            "areaSquareFeet": null,
+                            "secondPorchAreaSquareFeet": null
+                        },
+                        "parking": {
+                            "typeCode": "920",
+                            "garageTypeCode": "920",
+                            "parkingSpacesCount": null,
+                            "primaryAreaSquareFeet": 576,
+                            "secondAreaSquareFeet": null,
+                            "carportAreaSquareFeet": null
+                        },
+                        "pool": {},
+                        "walls": {
+                            "typeCode": "WOS"
+                        },
+                        "roof": {
+                            "typeCode": "015",
+                            "coverTypeCode": "015"
+                        }
+                    },
+                    "structureInterior": {
+                        "attic": {
+                            "typeCode": null
+                        },
+                        "walls": {
+                            "typeCode": null
+                        },
+                        "basement": {
+                            "typeCode": null,
+                            "finishTypeCode": null,
+                            "finishPercent": null
+                        },
+                        "flooring": {
+                            "typeCode": null,
+                            "coverTypeCode": null
+                        },
+                        "ceiling": {
+                            "typeCode": null,
+                            "heightFeet": null
+                        },
+                        "bathroomFixtures": {
+                            "count": null
+                        }
+                    },
+                    "interiorArea": {
+                        "universalBuildingAreaSquareFeet": 1895,
+                        "universalBuildingAreaSquareFeetSourceCode": "L",
+                        "buildingAreaSquareFeet": 1895,
+                        "buildingAdjustedAreaSquareFeet": null,
+                        "buildingGrossAreaSquareFeet": null,
+                        "livingAreaSquareFeet": 1895,
+                        "aboveGradeAreaSquareFeet": null,
+                        "groundFloorAreaSquareFeet": 1055,
+                        "basementAreaSquareFeet": null,
+                        "finishedBasementAreaSquareFeet": null,
+                        "unfinishedBasementAreaSquareFeet": null,
+                        "aboveGroundFloorAreaSquareFeet": null,
+                        "buildingAdditionsAreaSquareFeet": null,
+                        "entryLevelFloorAreaSquareFeet": null,
+                        "secondFloorAreaSquareFeet": 840,
+                        "thirdFloorAreaSquareFeet": null
+                    },
+                    "interiorRooms": {
+                        "totalCount": null,
+                        "bedroomsCount": 3,
+                        "bathroomsCount": null,
+                        "fullBathroomsCount": 2,
+                        "halfBathroomsCount": 1,
+                        "oneQtrBathroomsCount": null,
+                        "threeQtrBathroomsCount": null,
+                        "kitchensCount": null,
+                        "familyRoomsCount": null,
+                        "livingRoomsCount": null,
+                        "basementRoomsCount": null
+                    },
+                    "structureFeatures": {
+                        "airConditioning": {
+                            "typeCode": null
+                        },
+                        "firePlaces": {
+                            "typeCode": "0G0",
+                            "count": 1
+                        },
+                        "heating": {
+                            "typeCode": "RD0"
+                        },
+                        "plumbing": {
+                            "typeCode": null
+                        },
+                        "passengerElevators": {
+                            "count": null
+                        },
+                        "dormerWindows": {
+                            "count": null
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "ownership": {
+        "data": {
+            "clip": "1404385380",
+            "currentOwners": {
+                "ownerNames": [
+                    {
+                        "sequenceNumber": 1,
+                        "fullName": "KELCH JONATHAN M",
+                        "firstNameAndMiddleInitial": "JONATHAN M",
+                        "lastName": "KELCH",
+                        "isCorporate": false
+                    },
+                    {
+                        "sequenceNumber": 2,
+                        "fullName": "KELCH STEPHANIE O",
+                        "firstNameAndMiddleInitial": "STEPHANIE O",
+                        "lastName": "KELCH",
+                        "isCorporate": false
+                    }
+                ],
+                "relationshipTypeCode": null,
+                "ownerEtalCode": null,
+                "occupancyCode": "A",
+                "ownershipRightsCode": null
+            },
+            "currentOwnerMailingInfo": {
+                "mailingAddress": {
+                    "careOfName": null,
+                    "streetAddress": "13221 3RD AVE NW",
+                    "streetAddressParsed": {
+                        "houseNumber": "13221",
+                        "houseNumberSuffix": null,
+                        "houseNumber2": null,
+                        "direction": null,
+                        "streetName": "3RD",
+                        "mailingMode": "AVE",
+                        "quadrant": "NW",
+                        "unitNumber": null
+                    },
+                    "city": "SEATTLE",
+                    "state": "WA",
+                    "zipCode": "98177",
+                    "carrierRoute": "C082",
+                    "foreignAddress": null
+                },
+                "ownerMailingOptOutIndicator": "Y"
+            }
+        }
+    },
+    "siteLocation": {
+        "data": {
+            "clip": "1404385380",
+            "coordinatesParcel": {
+                "lat": 47.630116,
+                "lng": -122.528285
+            },
+            "coordinatesBlock": {
+                "lat": 47.630238,
+                "lng": -122.527759
+            },
+            "locationLegal": {
+                "subdivisionName": "SPT01-21-97-1",
+                "subdivisionTractNumber": null,
+                "subdivisionPlatBookNumber": null,
+                "subdivisionPlatPageNumber": null,
+                "blockNumber": "21",
+                "blockNumberSuffix": null,
+                "lotNumber": "B",
+                "lotNumberSuffix": null,
+                "description": "LOT B CITY OF BAINBRIDGE ISLAND SHORT PLAT NO. BI-76 RECORDED UNDER AUDITOR'S FILE NOS. 3050894/895. BEING A PORTION OF LOT B OF CITY OF WINSLOW SHORT PLAT NO. W-72 RECORDED UNDER AUDITOR FILE NO. 7706230108. BEING A PORTION OF THE SOUTHWEST QUARTER OF THE NORTHEAST QUARTER, SECTION 27, TOWNSHIP 25, RANGE 2 EAST, W.M., KITSAP COUNTY, WASHINGTON."
+            },
+            "locationSurvey": {
+                "range": "02E",
+                "township": "25",
+                "section": "27",
+                "quarterSection": "NE"
+            },
+            "neighborhood": {
+                "code": "7303604",
+                "name": "WINSLOW"
+            },
+            "municipality": {
+                "code": "200",
+                "name": "BAINBRIDGE ISLAND"
+            },
+            "town": {
+                "code": null
+            },
+            "jurisdictionCounty": {
+                "code": "BI"
+            },
+            "cbsa": {
+                "code": "14740",
+                "type": "Metro"
+            },
+            "censusTract": {
+                "id": "0909003017"
+            },
+            "taxRateArea": {
+                "code": "0215"
+            },
+            "taxDistrict": {
+                "name": "2E27251"
+            },
+            "landUseAndZoningCodes": {
+                "propertyTypeCode": "10",
+                "landUseCode": "163",
+                "stateLandUseCode": null,
+                "stateLandUseDescription": null,
+                "countyLandUseCode": "111",
+                "countyLandUseDescription": "SINGLE FAMILY RES",
+                "zoningCode": "CITY",
+                "zoningCodeDescription": "CITY",
+                "isManufacturedHome": null
+            },
+            "lot": {
+                "areaAcres": 0.31,
+                "areaSquareFeet": 13504,
+                "areaSquareFeetUsable": null,
+                "depthFeet": null,
+                "frontFeet": null,
+                "shapeCode": null,
+                "topographyType": null,
+                "easementTypeCode": null
+            },
+            "utilities": {
+                "fuelTypeCode": null,
+                "electricityWiringTypeCode": "EAV",
+                "sewerTypeCode": "001",
+                "utilitiesTypeCode": null,
+                "waterTypeCode": "WPU"
+            }
+        }
+    },
+    "taxAssessment": {
+        "metadata": {
+            "pageNumber": 1,
+            "pageSize": 1,
+            "totalRecords": 1,
+            "totalPages": 1
+        },
+        "items": [
+            {
+                "clip": "1404385380",
+                "taxAmount": {
+                    "billedYear": 2022,
+                    "delinquentYear": null,
+                    "areaCode": "0215",
+                    "areaCodeDescription": null,
+                    "propertyTaxRate": null,
+                    "calculatedTotalExemptionAmount": null,
+                    "totalTaxExemptionAmount": null,
+                    "totalTaxAmount": 9033.06,
+                    "countyTaxAmount": 8827.06,
+                    "schoolTaxAmount": null,
+                    "townTaxAmount": null,
+                    "villageTaxAmount": null,
+                    "netTaxAmount": null
+                },
+                "taxExemptions": {
+                    "commercial": [],
+                    "residential": []
+                },
+                "assessedValue": {
+                    "taxAssessedYear": 2021,
+                    "calculatedTotalValue": 896020,
+                    "calculatedLandValue": 216300,
+                    "calculatedImprovementValue": 679720,
+                    "calculatedImprovementValuePercentage": 76,
+                    "calculatedTotalValueSourceCode": "A",
+                    "taxableValue": 896020,
+                    "taxableImprovementValue": 679720,
+                    "taxableLandValue": 216300,
+                    "taxableOtherValue": null
+                },
+                "taxrollUpdate": {
+                    "lastAssessorUpdateDate": "2022-02-17",
+                    "taxrollCertificationDate": "2021-10-01"
+                },
+                "schoolDistricts": {
+                    "school": {
+                        "code": "303",
+                        "name": "BAINBRIDGE ISLAND",
+                        "elementary": {
+                            "code": null,
+                            "name": null
+                        },
+                        "middle": {
+                            "code": null,
+                            "name": null
+                        },
+                        "high": {
+                            "code": null,
+                            "name": null
+                        },
+                        "communityCollege": {
+                            "code": null,
+                            "name": null
+                        }
+                    }
+                },
+                "serviceDistricts": {
+                    "fire": {
+                        "code": null,
+                        "name": null
+                    },
+                    "trash": {
+                        "code": null,
+                        "name": null
+                    },
+                    "lighting": {
+                        "code": null,
+                        "name": null
+                    },
+                    "tax": {
+                        "code": null,
+                        "name": null
+                    },
+                    "sewer": {
+                        "code": null,
+                        "name": null
+                    },
+                    "utility": {
+                        "code": null,
+                        "name": null
+                    },
+                    "water": {
+                        "code": null,
+                        "name": null
+                    }
+                }
+            }
+        ]
+    },
+    "mostRecentOwnerTransfer": {
+        "metadata": {
+            "pageNumber": 1,
+            "pageSize": 1,
+            "totalRecords": 1,
+            "totalPages": 1
+        },
+        "items": [
+            {
+                "clip": "1404385380",
+                "transactionDetails": {
+                    "primaryCategoryCode": "B",
+                    "deedCategoryCode": "G",
+                    "saleDateDerived": "2020-08-04",
+                    "saleRecordingDateDerived": "2020-08-10",
+                    "saleAmount": 1122000,
+                    "saleTypeCode": null,
+                    "saleDocumentTypeCode": "WD",
+                    "saleDocumentNumber": "202008100298",
+                    "saleBookNumber": null,
+                    "salePageNumber": null,
+                    "ownershipTransferPercent": null,
+                    "multiOrSplitParcelCode": null,
+                    "isCashPurchase": false,
+                    "isMortgagePurchase": true,
+                    "isInterfamilyRelated": false,
+                    "isInvestorPurchase": false,
+                    "isResale": true,
+                    "isShortSale": false,
+                    "isForeclosureReo": false,
+                    "isForeclosureReoSale": false
+                },
+                "recordedPropertyAddress": {
+                    "streetAddress": "657 ANNIE ROSE LN NW",
+                    "streetAddressParsed": {
+                        "houseNumber": "657",
+                        "houseNumberSuffix": null,
+                        "houseNumber2": null,
+                        "direction": null,
+                        "streetName": "ANNIE ROSE",
+                        "mode": "LN",
+                        "quadrant": "NW",
+                        "unitNumber": null
+                    },
+                    "city": "BAINBRIDGE ISLAND",
+                    "state": "WA",
+                    "zipCode": "981102750",
+                    "carrierRoute": "R017",
+                    "county": "KITSAP"
+                },
+                "titleCompany": {
+                    "name": "PACIFIC NW TITLE",
+                    "code": "04832"
+                },
+                "propertyDetails": {
+                    "actualYearBuilt": 1998,
+                    "effectiveYearBuilt": null,
+                    "isResidentialProperty": true,
+                    "isNewConstruction": false
+                },
+                "landUseAndZoningCodes": {
+                    "propertyTypeCode": "10",
+                    "landUseCode": "163",
+                    "stateLandUseDescription": null,
+                    "countyLandUseDescription": null,
+                    "zoningCode": "CITY"
+                },
+                "buyerDetails": {
+                    "buyerNames": [
+                        {
+                            "sequenceNumber": 1,
+                            "fullName": "KELCH JONATHAN M & STEPHANIE O",
+                            "lastName": "KELCH",
+                            "firstNameAndMiddleInitial": "JONATHAN M",
+                            "isCorporate": null
+                        },
+                        {
+                            "sequenceNumber": 2,
+                            "fullName": null,
+                            "lastName": "KELCH",
+                            "firstNameAndMiddleInitial": "STEPHANIE O",
+                            "isCorporate": null
+                        }
+                    ],
+                    "relationshipTypeCode": "MC",
+                    "etalCode": "",
+                    "occupancyCode": "T",
+                    "ownershipRightsCode": null,
+                    "mailingAddress": {
+                        "careOfName": null,
+                        "streetAddress": "13221 3RD AVE NW",
+                        "streetAddressParsed": {
+                            "houseNumber": "13221",
+                            "houseNumberSuffix": null,
+                            "houseNumber2": null,
+                            "direction": null,
+                            "streetName": "3RD",
+                            "mode": "AVE",
+                            "quadrant": "NW",
+                            "unitNumber": null
+                        },
+                        "city": "SEATTLE",
+                        "state": "WA",
+                        "zipCode": "981774006",
+                        "carrierRoute": "C082"
+                    },
+                    "hasPartialInterest": null,
+                    "mailingOptOutIndicator": true
+                },
+                "sellerDetails": {
+                    "sellerNames": [
+                        {
+                            "sequenceNumber": 1,
+                            "fullName": "KERN CHRISTOPH"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "lastMarketSale": {
+        "metadata": {
+            "pageNumber": 1,
+            "pageSize": 1,
+            "totalRecords": 1,
+            "totalPages": 1
+        },
+        "items": [
+            {
+                "clip": "1404385380",
+                "transactionDetails": {
+                    "primaryCategoryCode": "A",
+                    "deedCategoryCode": "G",
+                    "saleDateDerived": "2010-08-11",
+                    "saleRecordingDateDerived": "2010-08-18",
+                    "saleAmount": 625000,
+                    "saleTypeCode": null,
+                    "saleDocumentTypeCode": "WD",
+                    "saleDocumentNumber": "201008180073",
+                    "saleBookNumber": null,
+                    "salePageNumber": null,
+                    "ownershipTransferPercent": null,
+                    "multiOrSplitParcelCode": null,
+                    "isCashPurchase": true,
+                    "isMortgagePurchase": false,
+                    "isInterfamilyRelated": false,
+                    "isInvestorPurchase": false,
+                    "isResale": true,
+                    "isShortSale": false,
+                    "isForeclosureReo": false,
+                    "isForeclosureReoSale": false
+                },
+                "recordedPropertyAddress": {
+                    "streetAddress": null,
+                    "streetAddressParsed": {
+                        "houseNumber": "657",
+                        "houseNumberSuffix": null,
+                        "houseNumber2": null,
+                        "direction": null,
+                        "streetName": "ANNIE ROSE",
+                        "mode": "LN",
+                        "quadrant": "NW",
+                        "unitNumber": null
+                    },
+                    "city": "BAINBRIDGE ISLAND",
+                    "state": "WA",
+                    "zipCode": "981102750",
+                    "carrierRoute": "R017",
+                    "county": "KITSAP"
+                },
+                "titleCompany": {
+                    "name": "PACIFIC NW TITLE",
+                    "code": "04832"
+                },
+                "propertyDetails": {
+                    "actualYearBuilt": 1998,
+                    "effectiveYearBuilt": null,
+                    "isResidentialProperty": true,
+                    "isNewConstruction": false
+                },
+                "landUseAndZoningCodes": {
+                    "propertyTypeCode": "10",
+                    "landUseCode": "163",
+                    "stateLandUseDescription": null,
+                    "countyLandUseDescription": null,
+                    "zoningCode": "CITY"
+                },
+                "buyerDetails": {
+                    "buyerNames": [
+                        {
+                            "sequenceNumber": 1,
+                            "fullName": "KERN CHRISTOPH",
+                            "lastName": "KERN",
+                            "firstNameAndMiddleInitial": "CHRISTOPH",
+                            "isCorporate": null
+                        },
+                        {
+                            "sequenceNumber": 2,
+                            "fullName": "GILBERT ALORIE",
+                            "lastName": "GILBERT",
+                            "firstNameAndMiddleInitial": "ALORIE",
+                            "isCorporate": null
+                        }
+                    ],
+                    "relationshipTypeCode": "HW",
+                    "etalCode": "",
+                    "occupancyCode": "S",
+                    "ownershipRightsCode": null,
+                    "mailingAddress": {
+                        "careOfName": null,
+                        "streetAddress": "657 ANNIE ROSE LN NW",
+                        "streetAddressParsed": {
+                            "houseNumber": "657",
+                            "houseNumberSuffix": null,
+                            "houseNumber2": null,
+                            "direction": null,
+                            "streetName": "ANNIE ROSE",
+                            "mode": "LN",
+                            "quadrant": "NW",
+                            "unitNumber": null
+                        },
+                        "city": "BAINBRIDGE ISLAND",
+                        "state": "WA",
+                        "zipCode": "981102750",
+                        "carrierRoute": "R017"
+                    },
+                    "hasPartialInterest": null,
+                    "mailingOptOutIndicator": null
+                },
+                "sellerDetails": {
+                    "sellerNames": [
+                        {
+                            "sequenceNumber": 1,
+                            "fullName": "WHEELIS ROGER F"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

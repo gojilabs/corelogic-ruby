@@ -1,4 +1,4 @@
-require 'http'
+# frozen_string_literal: true
 
 module Corelogic
   class Connection
@@ -8,14 +8,22 @@ module Corelogic
       @bearer_token = options[:bearer_token]
     end
 
-    BASE_PATH = 'https://api-prod.corelogic.com/'.freeze
+    BASE_PATH = 'https://property.corelogicapi.com/v2/properties/'
 
     def get(path, params = {})
-      HTTP.auth(bearer_auth_header).get(url(path), params)
+      headers = { 'Authorization' => bearer_auth_header }
+
+      uri = url(path)
+      uri.query = URI.encode_www_form(params)
+      http = Net::HTTP.new(uri.hostname, uri.port)
+      http.use_ssl = true
+      http.set_debug_output $stdout if ENV['CORELOGIC_DEBUG'].present?
+
+      http.get(uri, headers)
     end
 
     def authenticated?
-      !(bearer_token.nil? || bearer_token.empty?)
+      bearer_token.present?
     end
 
     private
