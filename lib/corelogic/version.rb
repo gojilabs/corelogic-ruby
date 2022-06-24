@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module Corelogic
-  VERSION = '2.0.1-goji'
+  VERSION = '2.0.2-goji'
 end
