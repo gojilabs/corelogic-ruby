@@ -37,31 +37,31 @@ module Corelogic
     attr_writer :clip, :ownership, :building, :tax_assessment, :site_location, :ownership_transfers
 
     def self.search(options)
-      Corelogic.properties.search(options)
+      Corelogic.api.search(options)
     end
 
     def ownership
-      @ownership ||= Corelogic.properties.ownership(clip)
+      @ownership ||= Corelogic.api.ownership(clip)
     end
 
     def building
-      @building ||= Corelogic.properties.building(clip)
+      @building ||= Corelogic.api.building(clip)
     end
 
     def tax_assessment
-      @tax_assessment ||= Corelogic.properties.tax_assessment(clip)
+      @tax_assessment ||= Corelogic.api.tax_assessment(clip)
     end
 
     def site_location
-      @site_location ||= Corelogic.properties.site(clip)
+      @site_location ||= Corelogic.api.site(clip)
     end
 
     def ownership_transfers
-      @ownership_transfers ||= Corelogic.properties.ownership_transfers(clip)
+      @ownership_transfers ||= Corelogic.api.ownership_transfers(clip)
     end
 
     def load_details
-      Corelogic.properties.property_detail(self)
+      Corelogic.api.property_detail(self)
     end
   end
 end

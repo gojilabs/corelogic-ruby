@@ -2,8 +2,8 @@
 
 require 'spec_helper'
 
-describe Corelogic::API::PropertiesRepository do
-  subject(:properties) { Corelogic.properties }
+describe Corelogic::API do
+  subject(:properties) { Corelogic.api }
 
   let(:connection) { Corelogic.container['connection'] }
   let(:oauth_error_body) { json(:oauth_error_body) }
@@ -50,7 +50,7 @@ describe Corelogic::API::PropertiesRepository do
 
       it 'requests the correct resource on GET' do
         properties.ownership(clip)
-        expect(a_get("#{clip}/ownership")).to have_been_made
+        expect(a_get("properties/#{clip}/ownership")).to have_been_made
       end
 
       it 'returns `Corelogic::Ownership` with clip' do
@@ -71,7 +71,7 @@ describe Corelogic::API::PropertiesRepository do
 
       it 'requests the correct resource on GET' do
         properties.building(clip)
-        expect(a_get("#{clip}/buildings")).to have_been_made
+        expect(a_get("properties/#{clip}/buildings")).to have_been_made
       end
 
       it 'returns `Corelogic::Building` with clip' do
@@ -92,7 +92,7 @@ describe Corelogic::API::PropertiesRepository do
 
       it 'requests the correct resource on GET' do
         properties.tax_assessment(clip)
-        expect(a_get("#{clip}/tax-assessments/latest")).to have_been_made
+        expect(a_get("properties/#{clip}/tax-assessments/latest")).to have_been_made
       end
 
       it 'returns `Corelogic::TaxAssessments` with clip' do
@@ -113,7 +113,7 @@ describe Corelogic::API::PropertiesRepository do
 
       it 'requests the correct resource on GET' do
         properties.site_location(clip)
-        expect(a_get("#{clip}/site-location")).to have_been_made
+        expect(a_get("properties/#{clip}/site-location")).to have_been_made
       end
 
       it 'returns `Corelogic::SiteLocation` with clip' do
@@ -134,12 +134,12 @@ describe Corelogic::API::PropertiesRepository do
 
       it 'requests market latest resource on GET' do
         properties.ownership_transfers(clip)
-        expect(a_get("#{clip}/ownership-transfers/market/latest")).to have_been_made
+        expect(a_get("properties/#{clip}/ownership-transfers/market/latest")).to have_been_made
       end
 
       it 'requests market all resource on GET' do
         properties.ownership_transfers(clip, 'market', 'all')
-        expect(a_get("#{clip}/ownership-transfers/market/all")).to have_been_made
+        expect(a_get("properties/#{clip}/ownership-transfers/market/all")).to have_been_made
       end
 
       it 'returns `Corelogic::OwnershipTransfers` with clip' do
@@ -161,7 +161,7 @@ describe Corelogic::API::PropertiesRepository do
 
       it 'requests the correct resource on GET' do
         properties.property_detail(property)
-        expect(a_get("#{clip}/property-detail")).to have_been_made
+        expect(a_get("properties/#{clip}/property-detail")).to have_been_made
       end
 
       it 'returns `Corelogic::PropertyDetail` with clip' do

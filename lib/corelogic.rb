@@ -21,8 +21,8 @@ module Corelogic
       register!
     end
 
-    def properties
-      Corelogic::API::PropertiesRepository.new
+    def api
+      Corelogic::API.new
     end
 
     private
@@ -50,4 +50,4 @@ module Corelogic
   end
 end
 
-require 'corelogic/api/properties_repository'
+require 'corelogic/api'

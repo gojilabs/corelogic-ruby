@@ -8,7 +8,7 @@ module Corelogic
       @bearer_token = options[:bearer_token]
     end
 
-    BASE_PATH = 'https://property.corelogicapi.com/v2/properties/'
+    BASE_PATH = 'https://property.corelogicapi.com/v2/'
 
     def get(path, params = {})
       headers = { 'Authorization' => bearer_auth_header }

@@ -18,10 +18,10 @@ RSpec.describe Corelogic::Connection do
     it { expect(connection).to respond_to(:get) }
 
     it 'returns an instance of `HTTP::Response`' do
-      expect(connection.get(Corelogic::API::PropertiesRepository::SEARCH_PATH)).to be_an_instance_of(Net::HTTPOK)
+      expect(connection.get(Corelogic::API::SEARCH_PATH)).to be_an_instance_of(Net::HTTPOK)
     end
 
-    it { expect(connection.get(Corelogic::API::PropertiesRepository::SEARCH_PATH).body.to_s).to eq properties_response }
+    it { expect(connection.get(Corelogic::API::SEARCH_PATH).body.to_s).to eq properties_response }
   end
 
   describe '#authenticated?' do
