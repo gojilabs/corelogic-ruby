@@ -11,6 +11,7 @@ require 'corelogic/ownership_transfer'
 require 'corelogic/rental_amount_model'
 require 'corelogic/site_location'
 require 'corelogic/tax_assessment'
+require 'corelogic/automated_value_model'
 
 module Corelogic
   class API
@@ -21,31 +22,31 @@ module Corelogic
     SEARCH_PATH = 'properties/search'
 
     def search(options = {})
-      Corelogic::Collection.new(Corelogic::Property, **perform_response(SEARCH_PATH, options))
+      Corelogic::Collection.new(Corelogic::Property, **perform_response(SEARCH_PATH, :v2, options))
     end
 
     def ownership(clip)
-      Corelogic::Ownership.new(**perform_response("properties/#{clip}/ownership")[:data])
+      Corelogic::Ownership.new(**perform_response("properties/#{clip}/ownership", :v2)[:data])
     end
 
     def building(clip)
-      Corelogic::Building.new(**perform_response("properties/#{clip}/buildings")[:data])
+      Corelogic::Building.new(**perform_response("properties/#{clip}/buildings", :v2)[:data])
     end
 
     def tax_assessment(clip)
-      Corelogic::Collection.new(Corelogic::TaxAssessment, **perform_response("properties/#{clip}/tax-assessments/latest"))
+      Corelogic::Collection.new(Corelogic::TaxAssessment, **perform_response("properties/#{clip}/tax-assessments/latest", :v2))
     end
 
     def site_location(clip)
-      Corelogic::SiteLocation.new(**perform_response("properties/#{clip}/site-location")[:data])
+      Corelogic::SiteLocation.new(**perform_response("properties/#{clip}/site-location", :v2)[:data])
     end
 
     def ownership_transfers(clip, sale_type = 'market', latest = 'latest')
-      Corelogic::Collection.new(Corelogic::OwnershipTransfer, **perform_response("properties/#{clip}/ownership-transfers/#{sale_type}/#{latest}"))
+      Corelogic::Collection.new(Corelogic::OwnershipTransfer, **perform_response("properties/#{clip}/ownership-transfers/#{sale_type}/#{latest}", :v2))
     end
 
     def property_detail(property)
-      response = perform_response("properties/#{property.clip}/property-detail")
+      response = perform_response("properties/#{property.clip}/property-detail", :v2)
 
       property.building = Corelogic::Building.new(**response[:buildings][:data]) if response[:buildings]
       property.ownership = Corelogic::Ownership.new(**response[:ownership][:data]) if response[:ownership]
@@ -56,16 +57,20 @@ module Corelogic
     end
 
     def rental_amount_model(clip)
-      Corelogic::RentalAmountModel.new(**perform_response('avms/ram', clip: clip))
+      Corelogic::RentalAmountModel.new(**perform_response('avms/ram', :v2, clip: clip))
+    end
+
+    def automated_value_model(clip, model)
+      Corelogic::AutomatedValueModel.new(**perform_response("property/#{clip}/avm/thv/#{model}", :v1))
     end
 
     private
 
-    def perform_response(path, options = {})
+    def perform_response(path, api_version, options = {})
       try = 0
       begin
         try += 1
-        response_parser.perform(perform_get(path, options))
+        response_parser.perform(perform_get(path, api_version, options))
       rescue Corelogic::Error::Unauthorized => e
         logger = Logger.new($stdout)
         logger.debug e.message
@@ -77,8 +82,8 @@ module Corelogic
       end
     end
 
-    def perform_get(path, options = {})
-      perform_connection.get(path, options)
+    def perform_get(path, api_version, options = {})
+      perform_connection.get(path, api_version, options)
     end
 
     def perform_connection(force: false)
